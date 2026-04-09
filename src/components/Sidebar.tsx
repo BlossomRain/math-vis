@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Chapter, Page, chapters } from '../data/chapters'
+import { Page, chapters } from '../data/chapters'
 import './Sidebar.css'
 
 interface SidebarProps {

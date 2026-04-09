@@ -6,7 +6,7 @@ import MenuBar from './components/MenuBar'
 import GlobalConfigPanel from './components/GlobalConfigPanel'
 import { Page, getFirstPage } from './data/chapters'
 import { SceneConfig } from './types/config'
-import { ThemeConfig, getTheme, toggleTheme } from './data/theme'
+import { ThemeConfig, getTheme } from './data/theme'
 import { GlobalConfig, loadGlobalConfig, saveGlobalConfig } from './data/globalConfig'
 import './App.css'
 
