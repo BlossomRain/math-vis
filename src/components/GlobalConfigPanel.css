@@ -1,0 +1,203 @@
+.global-config-panel {
+  display: flex;
+  height: 100%;
+  background: #f5f5f5;
+}
+
+.config-sidebar {
+  width: 320px;
+  background: #fff;
+  border-right: 1px solid #e8e8e8;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.config-sidebar h2 {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.config-section {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.config-section:last-of-type {
+  border-bottom: none;
+}
+
+.config-section h3 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.config-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.config-item label {
+  font-size: 13px;
+  color: #333;
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.config-item input[type="range"] {
+  flex: 1;
+  height: 4px;
+  -webkit-appearance: none;
+  background: #e0e0e0;
+  border-radius: 2px;
+  outline: none;
+}
+
+.config-item input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #1677ff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.config-item input[type="color"] {
+  width: 50px;
+  height: 28px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.config-item span {
+  font-size: 12px;
+  color: #666;
+  width: 50px;
+  text-align: right;
+}
+
+.config-item.checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  cursor: pointer;
+}
+
+.config-item.checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.config-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.config-actions button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.config-actions-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.config-actions-row button {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-save {
+  background: #1677ff;
+  color: #fff;
+}
+
+.btn-save:hover {
+  background: #4096ff;
+}
+
+.btn-cancel {
+  background: #fff;
+  color: #666;
+  border: 1px solid #d9d9d9;
+}
+
+.btn-cancel:hover {
+  border-color: #1677ff;
+  color: #1677ff;
+}
+
+.btn-primary {
+  background: #1677ff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #4096ff;
+}
+
+.btn-secondary {
+  background: #fff;
+  color: #333;
+  border: 1px solid #d9d9d9;
+}
+
+.btn-secondary:hover {
+  border-color: #1677ff;
+  color: #1677ff;
+}
+
+.btn-danger {
+  background: #fff;
+  color: #ff4d4f;
+  border: 1px solid #ff4d4f;
+}
+
+.btn-danger:hover {
+  background: #ff4d4f;
+  color: #fff;
+}
+
+.config-preview {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.config-preview h3 {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.preview-canvas {
+  flex: 1;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+  overflow: hidden;
+}
