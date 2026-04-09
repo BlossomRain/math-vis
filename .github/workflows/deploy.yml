@@ -9,9 +9,14 @@ permissions:
   pages: write
   id-token: write
 
+# 确保同一时间只有一个部署在运行
 concurrency:
   group: 'pages'
   cancel-in-progress: true
+
+env:
+  # 提前启用 Node.js 24 运行时以消除弃用警告
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   deploy:
@@ -26,17 +31,19 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: '24' # 明确使用最新的 Node.js 24
+          cache: 'npm'       # 自动开启 npm 缓存，加快安装速度
 
       - name: Install dependencies
+        # 使用 npm ci 代替 npm install 
+        # ci 命令更适合自动化环境，它会严格根据 package-lock.json 安装
         run: npm ci
 
       - name: Build
         run: npm run build
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
