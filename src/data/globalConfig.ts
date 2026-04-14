@@ -30,6 +30,28 @@ export const defaultGlobalConfig: GlobalConfig = {
 
 const STORAGE_KEY = 'math-vis-global-config'
 
+export function createDefaultGlobalConfig(): GlobalConfig {
+  return {
+    theme: {
+      ...defaultGlobalConfig.theme,
+      colors: {
+        ...defaultGlobalConfig.theme.colors,
+        functions: [...defaultGlobalConfig.theme.colors.functions]
+      },
+      line: { ...defaultGlobalConfig.theme.line },
+      canvas: {
+        ...defaultGlobalConfig.theme.canvas,
+        defaultBounds: { ...defaultGlobalConfig.theme.canvas.defaultBounds }
+      },
+      ui: { ...defaultGlobalConfig.theme.ui }
+    },
+    canvas: {
+      ...defaultGlobalConfig.canvas,
+      defaultBounds: { ...defaultGlobalConfig.canvas.defaultBounds }
+    }
+  }
+}
+
 // 加载全局配置
 export function loadGlobalConfig(): GlobalConfig {
   try {
@@ -40,7 +62,7 @@ export function loadGlobalConfig(): GlobalConfig {
   } catch (e) {
     console.error('加载全局配置失败:', e)
   }
-  return { ...defaultGlobalConfig }
+  return createDefaultGlobalConfig()
 }
 
 // 保存全局配置
@@ -89,7 +111,7 @@ export async function importGlobalConfig(file: File): Promise<GlobalConfig | nul
 
 // 重置为默认配置
 export function resetGlobalConfig(): GlobalConfig {
-  const config = { ...defaultGlobalConfig }
+  const config = createDefaultGlobalConfig()
   saveGlobalConfig(config)
   return config
 }

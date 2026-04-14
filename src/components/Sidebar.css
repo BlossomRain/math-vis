@@ -1,33 +1,38 @@
 .sidebar {
-  width: 260px;
+  width: 278px;
   height: 100%;
-  background: #fff;
-  border-right: 1px solid #e8e8e8;
+  border: 1px solid #d4e0e9;
+  border-radius: 16px;
+  background: rgba(250, 253, 255, 0.94);
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  box-shadow: 0 12px 28px rgba(18, 57, 78, 0.08);
 }
 
 .sidebar-header {
-  padding: 16px 20px;
-  border-bottom: 1px solid #e8e8e8;
+  padding: 16px 18px 14px;
+  border-bottom: 1px solid #dce8f0;
+  background: linear-gradient(180deg, #f9fcff 0%, #eef6fb 100%);
 }
 
 .sidebar-header h2 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
-  color: #1677ff;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2d4f63;
   margin: 0;
 }
 
 .sidebar-nav {
   flex: 1;
   overflow-y: auto;
-  padding: 8px 0;
+  padding: 10px 10px 12px;
 }
 
 .chapter {
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .chapter-title,
@@ -38,58 +43,66 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 14px;
-  color: #333;
+  font-size: 13px;
+  color: #264355;
   transition: all 0.2s;
 }
 
 .chapter-title:hover,
 .section-title:hover,
 .page-link:hover {
-  background: #f5f5f5;
+  background: #eef6fb;
 }
 
 .chapter-title {
-  padding: 12px 16px;
+  padding: 10px 12px;
   font-weight: 500;
   display: flex;
   align-items: center;
   gap: 8px;
+  border-radius: 10px;
 }
 
 .section-title {
-  padding: 10px 16px 10px 32px;
-  font-size: 13px;
-  color: #555;
+  padding: 8px 10px 8px 28px;
+  color: #426174;
   display: flex;
   align-items: center;
   gap: 8px;
+  border-radius: 8px;
 }
 
 .pages {
-  padding-left: 16px;
+  padding-left: 10px;
 }
 
 .page-link {
-  padding: 8px 16px 8px 48px;
-  font-size: 13px;
-  color: #666;
-  border-left: 2px solid transparent;
+  margin-top: 4px;
+  padding: 8px 10px 8px 38px;
+  color: #546b79;
+  border-radius: 8px;
+  border: 1px solid transparent;
 }
 
 .page-link.active {
-  color: #1677ff;
-  background: #e6f4ff;
-  border-left-color: #1677ff;
+  color: #0f6f96;
+  border-color: #9cc2d8;
+  background: #eaf4fb;
 }
 
 .arrow {
   font-size: 10px;
-  color: #999;
+  color: #6f8b9d;
   transition: transform 0.2s;
   display: inline-block;
 }
 
 .arrow.expanded {
   transform: rotate(90deg);
+}
+
+@media (max-width: 1100px) {
+  .sidebar {
+    width: 242px;
+  }
 }

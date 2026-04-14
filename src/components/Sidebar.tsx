@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Page, chapters } from '../data/chapters'
 import './Sidebar.css'
 
@@ -14,6 +14,25 @@ export default function Sidebar({ currentPageId, onPageSelect }: SidebarProps) {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
     new Set([chapters[0].sections[0].id])
   )
+
+  useEffect(() => {
+    for (const chapter of chapters) {
+      for (const section of chapter.sections) {
+        const isCurrentInSection = section.pages.some((page) => page.id === currentPageId)
+        if (isCurrentInSection) {
+          setExpandedChapters((prev) => {
+            if (prev.has(chapter.id)) return prev
+            return new Set(prev).add(chapter.id)
+          })
+          setExpandedSections((prev) => {
+            if (prev.has(section.id)) return prev
+            return new Set(prev).add(section.id)
+          })
+          return
+        }
+      }
+    }
+  }, [currentPageId])
 
   const toggleChapter = (chapterId: string) => {
     setExpandedChapters(prev => {
@@ -42,7 +61,7 @@ export default function Sidebar({ currentPageId, onPageSelect }: SidebarProps) {
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
-        <h2>数学可视化</h2>
+        <h2>科目 / 章节</h2>
       </div>
       <nav className="sidebar-nav">
         {chapters.map(chapter => (

@@ -1,12 +1,13 @@
 import { SceneConfig } from '../types/config'
-import { functionsChapter } from './books/functions'
+import type { GeometryLabPageModel, PageTemplateType } from '../core/model'
 import { calculusChapter } from './books/calculus'
-import { linearAlgebraChapter } from './books/linear-algebra'
 
 export interface Page {
   id: string
   title: string
-  config: SceneConfig
+  config?: SceneConfig
+  template?: PageTemplateType
+  pageModel?: GeometryLabPageModel
 }
 
 export interface Section {
@@ -24,9 +25,7 @@ export interface Chapter {
 
 // 聚合所有科目
 export const chapters: Chapter[] = [
-  functionsChapter,
-  calculusChapter,
-  linearAlgebraChapter
+  calculusChapter
 ]
 
 export function findPageById(pageId: string): Page | undefined {

@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import { GlobalConfig, saveGlobalConfig, exportGlobalConfig, importGlobalConfig, resetGlobalConfig } from '../data/globalConfig'
+import { GlobalConfig, exportGlobalConfig, importGlobalConfig, createDefaultGlobalConfig } from '../data/globalConfig'
 import Canvas2D from './Canvas2D'
 import { SceneConfig } from '../types/config'
 import './GlobalConfigPanel.css'
@@ -7,7 +7,7 @@ import './GlobalConfigPanel.css'
 interface GlobalConfigPanelProps {
   config: GlobalConfig
   onChange: (config: GlobalConfig) => void
-  onSave?: () => void
+  onSave?: (config: GlobalConfig) => void
   onCancel?: () => void
 }
 
@@ -46,7 +46,6 @@ export default function GlobalConfigPanel({ config, onChange, onSave, onCancel }
     const newConfig = { ...localConfig, ...updates }
     setLocalConfig(newConfig)
     onChange(newConfig)
-    saveGlobalConfig(newConfig)
   }, [localConfig, onChange])
 
   const updateTheme = useCallback((themeUpdates: Partial<GlobalConfig['theme']>) => {
@@ -76,7 +75,6 @@ export default function GlobalConfigPanel({ config, onChange, onSave, onCancel }
         if (imported) {
           setLocalConfig(imported)
           onChange(imported)
-          saveGlobalConfig(imported)
           alert('配置导入成功')
         } else {
           alert('导入失败：无效的配置文件')
@@ -88,7 +86,7 @@ export default function GlobalConfigPanel({ config, onChange, onSave, onCancel }
 
   const handleReset = () => {
     if (confirm('确定要重置为默认配置吗？')) {
-      const defaultConfig = resetGlobalConfig()
+      const defaultConfig = createDefaultGlobalConfig()
       setLocalConfig(defaultConfig)
       onChange(defaultConfig)
     }
@@ -216,7 +214,7 @@ export default function GlobalConfigPanel({ config, onChange, onSave, onCancel }
         </div>
 
         <div className="config-actions-row">
-          <button className="btn-save" onClick={onSave}>
+          <button className="btn-save" onClick={() => onSave?.(localConfig)}>
             保存
           </button>
           <button className="btn-cancel" onClick={onCancel}>

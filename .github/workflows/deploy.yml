@@ -31,7 +31,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '24' # 明确使用最新的 Node.js 24
+          node-version: 'lts/*' # 明确使用最新的 Node.js 24
           cache: 'npm'       # 自动开启 npm 缓存，加快安装速度
 
       - name: Install dependencies

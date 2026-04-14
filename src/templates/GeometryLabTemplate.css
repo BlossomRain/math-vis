@@ -1,0 +1,52 @@
+.geometry-lab-main {
+  grid-template-columns: minmax(0, 1fr) 360px;
+}
+
+.geometry-canvas-shell {
+  display: flex;
+  flex-direction: column;
+}
+
+.geometry-lab-side {
+  min-width: 0;
+  border: 1px solid #d4e0e9;
+  border-radius: 16px;
+  padding: 10px;
+  overflow-y: auto;
+  background: rgba(249, 252, 255, 0.95);
+  box-shadow: 0 12px 26px rgba(20, 56, 76, 0.08);
+}
+
+.geo-slider-row {
+  margin-bottom: 10px;
+}
+
+.geo-slider-row:last-child {
+  margin-bottom: 0;
+}
+
+.geo-slider-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: #2b4152;
+}
+
+.geo-slider-head strong {
+  color: #0f6f96;
+}
+
+.geo-slider {
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .geometry-lab-main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .geometry-lab-side {
+    max-height: 38vh;
+  }
+}

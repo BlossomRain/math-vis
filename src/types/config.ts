@@ -15,14 +15,83 @@ export interface SceneConfig {
   controls: ControlItem[]
 }
 
+export interface PointData {
+  x?: number
+  y?: number
+  xExpr?: string
+  yExpr?: string
+  label?: string
+  showCoords?: boolean
+}
+
+export interface LineData {
+  x1?: number
+  y1?: number
+  x2?: number
+  y2?: number
+  x1Expr?: string
+  y1Expr?: string
+  x2Expr?: string
+  y2Expr?: string
+  label?: string
+}
+
+export interface CircleData {
+  cx?: number
+  cy?: number
+  r?: number
+  cxExpr?: string
+  cyExpr?: string
+  rExpr?: string
+  label?: string
+}
+
+export interface ArcData {
+  cx?: number
+  cy?: number
+  r?: number
+  startAngle?: number
+  endAngle?: number
+  cxExpr?: string
+  cyExpr?: string
+  rExpr?: string
+  startAngleExpr?: string
+  endAngleExpr?: string
+  label?: string
+}
+
+export interface SequenceData {
+  indexMin?: number
+  indexMax?: number
+  indexMaxExpr?: string
+  valueExpr: string
+  highlightFrom?: number
+  highlightFromExpr?: string
+  showStem?: boolean
+}
+
+export interface BandData {
+  x1?: number
+  x2?: number
+  x1Expr?: string
+  x2Expr?: string
+  yCenter?: number
+  yCenterExpr?: string
+  halfHeight?: number
+  halfHeightExpr?: string
+  label?: string
+}
+
 export interface MathObject {
   id: string
-  type: 'function' | 'point' | 'vector' | 'line'
+  type: 'function' | 'point' | 'vector' | 'line' | 'circle' | 'arc' | 'projection' | 'sequence' | 'band'
   expr?: string
-  data?: unknown
+  data?: PointData | LineData | CircleData | ArcData | SequenceData | BandData | Record<string, unknown>
   style: {
     color: string
     lineWidth: number
+    dashed?: boolean
+    fillColor?: string
   }
   visible: boolean
 }
