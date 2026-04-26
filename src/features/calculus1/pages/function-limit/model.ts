@@ -2,15 +2,82 @@ import { GeometryLabPageModel } from '../../../../core/model'
 
 export const functionLimitModel: GeometryLabPageModel = {
   id: 'function-limit',
-  title: '函数极限：epsilon-delta 语言',
+  title: '函数极限：epsilon-delta 定义',
   template: 'geometry-lab',
   bounds: { xMin: 0.8, xMax: 3.2, yMin: 1.5, yMax: 6.5 },
   params: { epsilon: 0.8, delta: 0.18, a: 2, L: 4, x0: 2.12 },
+  notebook: {
+    summary: '用 x^2 在 x -> 2 时趋近于 4 的例子，把 epsilon-delta 定义中的“横向靠近”和“纵向约束”同时画出来。',
+    goals: [
+      '把 epsilon 邻域和 delta 邻域的几何意义看清楚',
+      '理解观察点 P 为什么能检验当前 x0 是否满足定义',
+      '建立“x 足够靠近 a，函数值就足够靠近 L”的图形直觉'
+    ],
+    sections: [
+      {
+        id: 'strips',
+        title: '两种邻域',
+        body: [
+          '橙色竖带围绕 x=a，控制输入变量的靠近方式；蓝色横带围绕 y=L，控制函数值的允许偏差。',
+          '当点 P 落在两种限制共同允许的区域里时，当前 x0 就满足这组 epsilon-delta 条件。'
+        ]
+      }
+    ],
+    prompts: [
+      '先缩小 delta，看看竖带怎样把曲线截得更紧。',
+      '再调 epsilon，比较纵向容许范围和横向选择之间的配合。'
+    ],
+    takeaways: [
+      '极限定义说的是“存在合适的 delta”，不是固定一个 delta。',
+      '图形上，横向限制最终服务于纵向结论。'
+    ]
+  },
   controls: [
     { param: 'epsilon', type: 'slider', min: 0.1, max: 1.8, step: 0.01, label: 'epsilon' },
     { param: 'delta', type: 'slider', min: 0.05, max: 0.8, step: 0.01, label: 'delta' },
     { param: 'x0', type: 'slider', min: 1.2, max: 2.8, step: 0.01, label: '观察点 x0' }
   ],
+  keyPointSchema: {
+    groups: [
+      {
+        id: 'anchors',
+        title: '关键位置',
+        fields: [
+          { id: 'a', label: 'a', valueExpr: 'a', precision: 4 },
+          { id: 'a-left', label: 'a - delta', valueExpr: 'a - delta', precision: 4 },
+          { id: 'a-right', label: 'a + delta', valueExpr: 'a + delta', precision: 4 },
+          { id: 'l', label: 'L', valueExpr: 'L', precision: 4 },
+          { id: 'l-low', label: 'L - epsilon', valueExpr: 'L - epsilon', precision: 4 },
+          { id: 'l-high', label: 'L + epsilon', valueExpr: 'L + epsilon', precision: 4 },
+          { id: 'px', label: 'P.x', valueExpr: 'x0', precision: 4 },
+          { id: 'py', label: 'P.y = f(x0)', valueExpr: 'x0^2', precision: 4 }
+        ]
+      }
+    ]
+  },
+  observationSchema: {
+    groups: [
+      {
+        id: 'condition',
+        title: 'epsilon-delta 条件',
+        fields: [
+          { id: 'epsilon', label: 'epsilon', valueExpr: 'epsilon', precision: 4 },
+          { id: 'delta', label: 'delta', valueExpr: 'delta', precision: 4 },
+          { id: 'xd', label: '|x-a|', valueExpr: 'abs(x0 - a)', precision: 4 },
+          { id: 'yd', label: '|f(x)-L|', valueExpr: 'abs(x0^2 - L)', precision: 4 }
+        ]
+      },
+      {
+        id: 'sample',
+        title: '当前观察点',
+        fields: [
+          { id: 'in-delta', label: '在 delta 邻域内', valueExpr: 'abs(x0 - a) < delta', format: 'boolean' },
+          { id: 'in-epsilon', label: '在 epsilon 邻域内', valueExpr: 'abs(x0^2 - L) < epsilon', format: 'boolean' },
+          { id: 'fx0', label: 'f(x0)', valueExpr: 'x0^2', precision: 4 }
+        ]
+      }
+    ]
+  },
   userFunctionLayers: [
     { id: 'curve', expr: 'x^2', color: '#1677ff', lineWidth: 2.4, visible: true, editable: false }
   ],

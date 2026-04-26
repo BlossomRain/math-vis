@@ -1,8 +1,11 @@
+import { evaluate } from 'mathjs'
+import { GeometryLabPageModel, ObservationField } from '../../core/model'
 import { SceneConfig } from '../../types/config'
 import './Panels.css'
 
 interface KeyPointsPanelProps {
   config: SceneConfig
+  pageModel?: GeometryLabPageModel
 }
 
 function fp(value: number) {
@@ -13,8 +16,46 @@ function deg(value: number) {
   return ((value * 180) / Math.PI).toFixed(1)
 }
 
-export default function KeyPointsPanel({ config }: KeyPointsPanelProps) {
+function resolveFieldValue(field: ObservationField, params: Record<string, number>) {
+  try {
+    const rawValue = evaluate(field.valueExpr, params)
+
+    if (field.format === 'boolean') {
+      return rawValue ? field.trueText ?? '是' : field.falseText ?? '否'
+    }
+
+    if (typeof rawValue === 'number' && Number.isFinite(rawValue)) {
+      const precision = field.precision ?? 4
+      return `${rawValue.toFixed(precision)}${field.suffix ?? ''}`
+    }
+
+    return String(rawValue)
+  } catch {
+    return '—'
+  }
+}
+
+export default function KeyPointsPanel({ config, pageModel }: KeyPointsPanelProps) {
   const { params } = config
+
+  if (pageModel?.keyPointSchema) {
+    return (
+      <div className="panel-card">
+        <h3 className="panel-title">关键点</h3>
+        {pageModel.keyPointSchema.groups.map((group) => (
+          <div key={group.id} className="obs-group">
+            <div className="obs-group-title">{group.title}</div>
+            {group.fields.map((field) => (
+              <div key={field.id} className="obs-row">
+                <span>{field.label}</span>
+                <strong>{resolveFieldValue(field, params)}</strong>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    )
+  }
 
   if (config.id === 'euler-angle-sum') {
     const alpha = params.alpha ?? 0

@@ -1,3 +1,5 @@
+import { evaluate } from 'mathjs'
+import { GeometryLabPageModel, ObservationField } from '../../core/model'
 import { SceneConfig } from '../../types/config'
 import { computeEulerObservation } from '../../features/calculus0/pages/euler-angle-sum/compute'
 import { computeHarmonicObservation } from '../../features/calculus0/pages/harmonic-composition/compute'
@@ -7,14 +9,55 @@ import './Panels.css'
 
 interface ObservationPanelProps {
   config: SceneConfig
+  pageModel?: GeometryLabPageModel
 }
 
 function formatNumber(value: number, digits = 6) {
   return value.toFixed(digits)
 }
 
-export default function ObservationPanel({ config }: ObservationPanelProps) {
+function resolveFieldValue(field: ObservationField, params: Record<string, number>) {
+  try {
+    const rawValue = evaluate(field.valueExpr, params)
+
+    if (field.format === 'boolean') {
+      return rawValue ? field.trueText ?? '是' : field.falseText ?? '否'
+    }
+
+    if (typeof rawValue === 'number' && Number.isFinite(rawValue)) {
+      const precision = field.precision ?? 4
+      return `${rawValue.toFixed(precision)}${field.suffix ?? ''}`
+    }
+
+    return String(rawValue)
+  } catch {
+    return '—'
+  }
+}
+
+export default function ObservationPanel({ config, pageModel }: ObservationPanelProps) {
   const { params } = config
+
+  if (pageModel?.observationSchema) {
+    return (
+      <div className="panel-card">
+        <h3 className="panel-title">公式观察</h3>
+        {pageModel.observationSchema.groups.map((group) => (
+          <div key={group.id} className="obs-group">
+            <div className="obs-group-title">{group.title}</div>
+            {group.fields.map((field) => (
+              <div key={field.id} className="obs-row">
+                <span>{field.label}</span>
+                <strong className={field.format === 'boolean' ? 'obs-delta' : undefined}>
+                  {resolveFieldValue(field, params)}
+                </strong>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    )
+  }
 
   if (config.id === 'euler-angle-sum') {
     const alpha = params.alpha ?? 0

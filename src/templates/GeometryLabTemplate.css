@@ -1,5 +1,51 @@
 .geometry-lab-main {
-  grid-template-columns: minmax(0, 1fr) 360px;
+  grid-template-columns: minmax(0, 1fr) 380px;
+}
+
+.geometry-canvas-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 12px;
+}
+
+.geometry-lesson-header {
+  border: 1px solid #d4e0e9;
+  border-radius: 16px;
+  padding: 16px 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(244, 250, 255, 0.96) 100%);
+  box-shadow: 0 12px 26px rgba(20, 56, 76, 0.08);
+}
+
+.geometry-lesson-kicker {
+  margin-bottom: 8px;
+  font-size: 11px;
+  color: #688397;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.geometry-lesson-headline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.geometry-lesson-headline h2 {
+  margin: 0;
+  font-size: 28px;
+  color: #163547;
+  font-family: "IBM Plex Serif", "Georgia", serif;
+  font-weight: 600;
+}
+
+.geometry-lesson-summary {
+  margin: 8px 0 0;
+  max-width: 72ch;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4b6577;
 }
 
 .geometry-canvas-shell {
@@ -11,7 +57,7 @@
   min-width: 0;
   border: 1px solid #d4e0e9;
   border-radius: 16px;
-  padding: 10px;
+  padding: 12px;
   overflow-y: auto;
   background: rgba(249, 252, 255, 0.95);
   box-shadow: 0 12px 26px rgba(20, 56, 76, 0.08);
@@ -37,6 +83,11 @@
   color: #0f6f96;
 }
 
+.canvas-subtitle {
+  font-size: 12px;
+  color: #6b8394;
+}
+
 .geo-slider {
   width: 100%;
 }
@@ -46,7 +97,11 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .geometry-lesson-headline {
+    flex-direction: column;
+  }
+
   .geometry-lab-side {
-    max-height: 38vh;
+    max-height: 44vh;
   }
 }

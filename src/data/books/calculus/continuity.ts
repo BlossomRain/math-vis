@@ -3,10 +3,10 @@ import { Page } from '../../chapters'
 export const continuityPages: Page[] = [
   {
     id: 'removable-discontinuity',
-    title: '可去间断与补洞',
+    title: '可去间断：原式与补全',
     config: {
       id: 'removable-discontinuity',
-      title: '可去间断：原式与补全函数',
+      title: '可去间断：原式与补全',
       scene: {
         type: '2d',
         bounds: { xMin: -6, xMax: 6, yMin: -2, yMax: 6 }
@@ -33,10 +33,10 @@ export const continuityPages: Page[] = [
   },
   {
     id: 'asymptote-rational',
-    title: '有理函数与渐近线',
+    title: '有理函数：渐近线观察',
     config: {
       id: 'asymptote-rational',
-      title: '有理函数渐近行为',
+      title: '有理函数：渐近线观察',
       scene: {
         type: '2d',
         bounds: { xMin: -10, xMax: 10, yMin: -10, yMax: 10 }

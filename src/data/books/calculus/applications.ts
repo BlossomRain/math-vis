@@ -3,10 +3,10 @@ import { Page } from '../../chapters'
 export const applicationsPages: Page[] = [
   {
     id: 'extrema-cubic',
-    title: '极值与单调性',
+    title: '极值与单调性：三次函数',
     config: {
       id: 'extrema-cubic',
-      title: '三次函数与导数',
+      title: '极值与单调性：三次函数',
       scene: {
         type: '2d',
         bounds: { xMin: -5, xMax: 5, yMin: -12, yMax: 12 }
@@ -35,10 +35,10 @@ export const applicationsPages: Page[] = [
   },
   {
     id: 'curvature-cubic',
-    title: '曲率与凹凸性',
+    title: '凹凸性：f、f′ 与 f″ 对比',
     config: {
       id: 'curvature-cubic',
-      title: 'f, f′ 与 f″ 对比',
+      title: '凹凸性：f、f′ 与 f″ 对比',
       scene: {
         type: '2d',
         bounds: { xMin: -4, xMax: 4, yMin: -10, yMax: 10 }
@@ -74,10 +74,10 @@ export const applicationsPages: Page[] = [
   },
   {
     id: 'lhopital-sinx',
-    title: "洛必达法则（sinx/x）",
+    title: '洛必达法则：sin(kx)/x',
     config: {
       id: 'lhopital-sinx',
-      title: '极限与洛必达对比',
+      title: '洛必达法则：sin(kx)/x',
       scene: {
         type: '2d',
         bounds: { xMin: -10, xMax: 10, yMin: -3, yMax: 3 }

@@ -35,6 +35,10 @@ export interface ObservationField {
   baselineExpr?: string
   deltaExpr?: string
   precision?: number
+  format?: 'number' | 'boolean' | 'text'
+  trueText?: string
+  falseText?: string
+  suffix?: string
 }
 
 export interface ObservationGroup {
@@ -45,6 +49,20 @@ export interface ObservationGroup {
 
 export interface ObservationSchema {
   groups: ObservationGroup[]
+}
+
+export interface NoteSection {
+  id: string
+  title: string
+  body: string[]
+}
+
+export interface PageNotebookMeta {
+  summary?: string
+  goals?: string[]
+  prompts?: string[]
+  takeaways?: string[]
+  sections?: NoteSection[]
 }
 
 export interface LegendItem {
@@ -83,6 +101,8 @@ export interface GeometryLabPageModel {
   controls: ControlItem[]
   geometryLayers: GeometryObject[]
   userFunctionLayers: UserFunctionLayer[]
+  notebook?: PageNotebookMeta
+  keyPointSchema?: ObservationSchema
   observationSchema?: ObservationSchema
   legendItems?: LegendItem[]
   formulaDock?: FormulaDockContent

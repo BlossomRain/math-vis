@@ -7,14 +7,14 @@ export function getCalculus1LimitsPages(): Page[] {
   return [
     {
       id: sequenceLimitModel.id,
-      title: '数列极限',
+      title: sequenceLimitModel.title,
       template: sequenceLimitModel.template,
       pageModel: sequenceLimitModel,
       config: adaptGeometryLabModelToSceneConfig(sequenceLimitModel)
     },
     {
       id: functionLimitModel.id,
-      title: '函数极限',
+      title: functionLimitModel.title,
       template: functionLimitModel.template,
       pageModel: functionLimitModel,
       config: adaptGeometryLabModelToSceneConfig(functionLimitModel)

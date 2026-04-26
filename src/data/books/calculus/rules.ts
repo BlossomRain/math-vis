@@ -3,10 +3,10 @@ import { Page } from '../../chapters'
 export const rulesPages: Page[] = [
   {
     id: 'chain-rule-sine',
-    title: '链式法则（正弦复合）',
+    title: '链式法则：sin(kx+b) 与导函数',
     config: {
       id: 'chain-rule-sine',
-      title: 'y = sin(kx + b) 与导函数',
+      title: '链式法则：sin(kx+b) 与导函数',
       scene: {
         type: '2d',
         bounds: { xMin: -10, xMax: 10, yMin: -4, yMax: 4 }
@@ -36,10 +36,10 @@ export const rulesPages: Page[] = [
   },
   {
     id: 'inverse-exp-log',
-    title: '反函数（exp 与 log）',
+    title: '反函数：exp 与 log',
     config: {
       id: 'inverse-exp-log',
-      title: '指数与对数函数图像',
+      title: '反函数：exp 与 log',
       scene: {
         type: '2d',
         bounds: { xMin: -2, xMax: 6, yMin: -2, yMax: 8 }

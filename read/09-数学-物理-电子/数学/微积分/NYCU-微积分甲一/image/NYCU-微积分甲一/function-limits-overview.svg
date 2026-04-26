@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="840" viewBox="0 0 1280 840">
+  <defs>
+    <style>
+      .bg { fill: #f7fbff; }
+      .panel { fill: #ffffff; stroke: #d6e3ef; stroke-width: 2; rx: 18; }
+      .title { font: 700 28px 'Segoe UI', 'PingFang SC', sans-serif; fill: #1f3b53; }
+      .subtitle { font: 600 18px 'Segoe UI', 'PingFang SC', sans-serif; fill: #49657a; }
+      .label { font: 14px 'Segoe UI', 'PingFang SC', sans-serif; fill: #587286; }
+      .expr { font: 600 14px 'Consolas', 'SFMono-Regular', monospace; fill: #26465f; }
+      .axis { stroke: #b7cddd; stroke-width: 1.5; }
+      .curve { fill: none; stroke: #1677ff; stroke-width: 3; }
+      .curve2 { fill: none; stroke: #13a36b; stroke-width: 3; }
+      .curve3 { fill: none; stroke: #fa8c16; stroke-width: 3; }
+      .curve4 { fill: none; stroke: #7a4dff; stroke-width: 3; }
+      .ghost { fill: #ffffff; stroke: #1677ff; stroke-width: 2.5; }
+      .solid { fill: #1677ff; stroke: #1677ff; stroke-width: 2; }
+      .danger { fill: #ff4d4f; }
+      .note { font: 13px 'Segoe UI', 'PingFang SC', sans-serif; fill: #5f7789; }
+      .section { font: 700 20px 'Segoe UI', 'PingFang SC', sans-serif; fill: #20445d; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1280" height="840"/>
+  <text class="title" x="60" y="56">函数极限图像草图</text>
+  <text class="subtitle" x="60" y="88">用于区分“极限存在”“左右极限不等”“极限不存在”的典型情形</text>
+
+  <text class="section" x="60" y="132">A. 极限存在</text>
+  <text class="section" x="60" y="454">B. 极限不存在</text>
+
+  <rect class="panel" x="50" y="150" width="370" height="260" rx="18"/>
+  <rect class="panel" x="455" y="150" width="370" height="260" rx="18"/>
+  <rect class="panel" x="860" y="150" width="370" height="260" rx="18"/>
+  <rect class="panel" x="50" y="472" width="370" height="260" rx="18"/>
+  <rect class="panel" x="455" y="472" width="370" height="260" rx="18"/>
+  <rect class="panel" x="860" y="472" width="370" height="260" rx="18"/>
+
+  <text class="subtitle" x="76" y="182">1. 连续点</text>
+  <text class="expr" x="76" y="208">f(x)=x², a=1</text>
+  <line class="axis" x1="90" y1="340" x2="380" y2="340"/>
+  <line class="axis" x1="235" y1="220" x2="235" y2="380"/>
+  <path class="curve" d="M120 360 Q175 290 235 250 Q295 230 350 170"/>
+  <circle class="solid" cx="270" cy="230" r="5"/>
+  <text class="note" x="76" y="398">函数在 a 有定义，且函数值与极限值一致。</text>
+
+  <text class="subtitle" x="481" y="182">2. 空洞点，但极限存在</text>
+  <text class="expr" x="481" y="208">f(x)=(x²-1)/(x-1), a=1</text>
+  <line class="axis" x1="495" y1="340" x2="785" y2="340"/>
+  <line class="axis" x1="640" y1="220" x2="640" y2="380"/>
+  <path class="curve2" d="M520 340 Q590 310 640 280 Q690 250 760 210"/>
+  <circle class="ghost" cx="676" cy="252" r="7"/>
+  <text class="note" x="481" y="398">a 点无定义，但左右都趋向同一个值。</text>
+
+  <text class="subtitle" x="886" y="182">3. 函数值不等于极限值</text>
+  <text class="expr" x="886" y="208">f(1)=4, 但 lim[x→1]f(x)=3</text>
+  <line class="axis" x1="900" y1="340" x2="1190" y2="340"/>
+  <line class="axis" x1="1045" y1="220" x2="1045" y2="380"/>
+  <path class="curve3" d="M925 340 Q995 310 1045 280 Q1095 250 1165 210"/>
+  <circle class="ghost" cx="1081" cy="252" r="7"/>
+  <circle class="danger" cx="1081" cy="202" r="6"/>
+  <text class="note" x="886" y="398">空心点表示极限位置，实心点表示实际函数值。</text>
+
+  <text class="subtitle" x="76" y="504">4. 左右极限不相等（跳跃）</text>
+  <text class="expr" x="76" y="530">f(x)= {-1, x&lt;0 ; 1, x≥0}</text>
+  <line class="axis" x1="90" y1="662" x2="380" y2="662"/>
+  <line class="axis" x1="235" y1="542" x2="235" y2="702"/>
+  <path class="curve" d="M120 690 L220 690"/>
+  <path class="curve" d="M250 610 L350 610"/>
+  <circle class="ghost" cx="235" cy="690" r="6"/>
+  <circle class="solid" cx="235" cy="610" r="5"/>
+  <text class="note" x="76" y="720">左、右两侧趋近不同值，所以极限不存在。</text>
+
+  <text class="subtitle" x="481" y="504">5. 趋于无穷大</text>
+  <text class="expr" x="481" y="530">f(x)=1/(x-a), a=0</text>
+  <line class="axis" x1="495" y1="662" x2="785" y2="662"/>
+  <line class="axis" x1="640" y1="542" x2="640" y2="702"/>
+  <path class="curve4" d="M520 680 C565 680 600 675 620 650 C632 635 636 600 638 560"/>
+  <path class="curve4" d="M642 560 C644 600 648 635 660 650 C680 675 715 680 760 680"/>
+  <text class="note" x="481" y="720">函数值无界增大或减小，不收敛到某个实数。</text>
+
+  <text class="subtitle" x="886" y="504">6. 震荡</text>
+  <text class="expr" x="886" y="530">f(x)=sin(1/x), a=0</text>
+  <line class="axis" x1="900" y1="662" x2="1190" y2="662"/>
+  <line class="axis" x1="1045" y1="542" x2="1045" y2="702"/>
+  <path class="curve" d="M905 640 C930 610 945 715 965 600 C985 560 995 735 1015 585 C1030 560 1040 740 1048 620 C1055 560 1060 740 1075 595 C1090 560 1105 720 1125 610 C1145 575 1165 680 1185 635"/>
+  <text class="note" x="886" y="720">在 a 附近持续来回摆动，无法逼近单一值。</text>
+</svg>

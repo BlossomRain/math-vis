@@ -2,14 +2,79 @@ import { GeometryLabPageModel } from '../../../../core/model'
 
 export const eulerAngleSumModel: GeometryLabPageModel = {
   id: 'euler-angle-sum',
-  title: '欧拉公式视角：和角公式验证',
+  title: '和角公式：欧拉公式视角',
   template: 'geometry-lab',
   bounds: { xMin: -1.6, xMax: 1.6, yMin: -1.6, yMax: 1.6 },
   params: { alpha: 0.8, beta: 0.6 },
+  notebook: {
+    summary: '借助单位圆与复指数，把和角公式从代数恒等式变成可以直接观察的几何关系。',
+    goals: [
+      '把角 a、b 与单位圆上的点坐标联系起来',
+      '看见 sin(a+b)、cos(a+b) 如何来自向量旋转',
+      '把图形观察与欧拉公式推导互相对应'
+    ],
+    sections: [
+      {
+        id: 'setup',
+        title: '图形设置',
+        body: [
+          '绿色射线 OA 对应角 a，洋红色射线 OC 对应角 a+b。点 A 与点 C 在单位圆上的坐标，分别就是这两个角的余弦和正弦值。',
+          '虚线投影把圆上的点拆回到 x 轴与 y 轴，于是 cos 和 sin 不再只是符号，而是可见的坐标分量。'
+        ]
+      }
+    ],
+    prompts: [
+      '拖动 a 和 b，比较 A 与 C 的位置变化。',
+      '先只看 x 坐标，再只看 y 坐标，观察它们分别对应哪一条公式。'
+    ],
+    takeaways: [
+      '单位圆坐标天然编码了 sin 和 cos。',
+      '和角公式可以理解为两次旋转叠加后的坐标重组。'
+    ]
+  },
   controls: [
     { param: 'alpha', type: 'slider', min: -3.14, max: 3.14, step: 0.01, label: '角 a (rad)' },
     { param: 'beta', type: 'slider', min: -3.14, max: 3.14, step: 0.01, label: '角 b (rad)' }
   ],
+  keyPointSchema: {
+    groups: [
+      {
+        id: 'angles',
+        title: '角与坐标',
+        fields: [
+          { id: 'alpha', label: 'a', valueExpr: 'alpha', precision: 4, suffix: ' rad' },
+          { id: 'beta', label: 'b', valueExpr: 'beta', precision: 4, suffix: ' rad' },
+          { id: 'sum', label: 'a+b', valueExpr: 'alpha + beta', precision: 4, suffix: ' rad' },
+          { id: 'ax', label: 'A.x = cos(a)', valueExpr: 'cos(alpha)', precision: 4 },
+          { id: 'ay', label: 'A.y = sin(a)', valueExpr: 'sin(alpha)', precision: 4 },
+          { id: 'cx', label: 'C.x = cos(a+b)', valueExpr: 'cos(alpha + beta)', precision: 4 },
+          { id: 'cy', label: 'C.y = sin(a+b)', valueExpr: 'sin(alpha + beta)', precision: 4 }
+        ]
+      }
+    ]
+  },
+  observationSchema: {
+    groups: [
+      {
+        id: 'sin-group',
+        title: 'sin(a+b)',
+        fields: [
+          { id: 'sin-left', label: '左侧', valueExpr: 'sin(alpha + beta)', precision: 6 },
+          { id: 'sin-right', label: '展开', valueExpr: 'sin(alpha) * cos(beta) + cos(alpha) * sin(beta)', precision: 6 },
+          { id: 'sin-delta', label: '误差', valueExpr: 'abs(sin(alpha + beta) - (sin(alpha) * cos(beta) + cos(alpha) * sin(beta)))', precision: 6 }
+        ]
+      },
+      {
+        id: 'cos-group',
+        title: 'cos(a+b)',
+        fields: [
+          { id: 'cos-left', label: '左侧', valueExpr: 'cos(alpha + beta)', precision: 6 },
+          { id: 'cos-right', label: '展开', valueExpr: 'cos(alpha) * cos(beta) - sin(alpha) * sin(beta)', precision: 6 },
+          { id: 'cos-delta', label: '误差', valueExpr: 'abs(cos(alpha + beta) - (cos(alpha) * cos(beta) - sin(alpha) * sin(beta)))', precision: 6 }
+        ]
+      }
+    ]
+  },
   userFunctionLayers: [],
   legendItems: [],
   formulaDock: {

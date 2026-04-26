@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <style>
+      .bg { fill: #f7fbff; }
+      .panel { fill: #ffffff; stroke: #d6e3ef; stroke-width: 2; rx: 18; }
+      .title { font: 700 28px 'Segoe UI', 'PingFang SC', sans-serif; fill: #1f3b53; }
+      .subtitle { font: 600 18px 'Segoe UI', 'PingFang SC', sans-serif; fill: #49657a; }
+      .note { font: 15px 'Segoe UI', 'PingFang SC', sans-serif; fill: #5d7588; }
+      .expr { font: 600 16px 'Consolas', 'SFMono-Regular', monospace; fill: #26465f; }
+      .axis { stroke: #a9bfd0; stroke-width: 2; }
+      .curve { fill: none; stroke: #1677ff; stroke-width: 4; }
+      .vband { fill: rgba(250, 140, 22, 0.18); stroke: #fa8c16; stroke-width: 2; }
+      .hband { fill: rgba(22, 119, 255, 0.15); stroke: #1677ff; stroke-width: 2; }
+      .guide { stroke: #722ed1; stroke-width: 2; stroke-dasharray: 8 6; }
+      .point { fill: #722ed1; }
+      .mark { font: 700 16px 'Segoe UI', 'PingFang SC', sans-serif; fill: #20445d; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="title" x="60" y="56">epsilon-delta 定义草图</text>
+  <text class="subtitle" x="60" y="88">以 lim[x→a] f(x) = L 为例，观察“横向控制 x，纵向约束 f(x)”</text>
+
+  <rect class="panel" x="40" y="120" width="760" height="520" rx="18"/>
+  <line class="axis" x1="110" y1="520" x2="740" y2="520"/>
+  <line class="axis" x1="390" y1="180" x2="390" y2="580"/>
+
+  <rect class="vband" x="310" y="150" width="160" height="410"/>
+  <rect class="hband" x="90" y="320" width="650" height="110"/>
+
+  <path class="curve" d="M120 530 C220 530 270 510 320 470 C350 445 370 415 390 382 C410 350 435 320 470 290 C520 245 590 212 720 190"/>
+
+  <line class="guide" x1="455" y1="338" x2="455" y2="520"/>
+  <line class="guide" x1="390" y1="338" x2="455" y2="338"/>
+  <circle class="point" cx="455" cy="338" r="7"/>
+
+  <text class="mark" x="382" y="605">a</text>
+  <text class="mark" x="315" y="605">a-δ</text>
+  <text class="mark" x="445" y="605">a+δ</text>
+  <text class="mark" x="760" y="526">x</text>
+  <text class="mark" x="398" y="176">y</text>
+
+  <text class="mark" x="756" y="377">L+ε</text>
+  <text class="mark" x="756" y="433">L-ε</text>
+  <text class="mark" x="756" y="403">L</text>
+  <text class="mark" x="466" y="332">P(x, f(x))</text>
+
+  <rect class="panel" x="830" y="120" width="330" height="520" rx="18"/>
+  <text class="subtitle" x="858" y="170">阅读提示</text>
+  <text class="note" x="858" y="212">1. 先指定任意一个 ε&gt;0，</text>
+  <text class="note" x="878" y="236">也就是先给出横向蓝带。</text>
+
+  <text class="note" x="858" y="284">2. 接着寻找某个 δ&gt;0，</text>
+  <text class="note" x="878" y="308">也就是找到足够窄的竖向橙带。</text>
+
+  <text class="note" x="858" y="356">3. 只要 x 落在</text>
+  <text class="expr" x="878" y="382">0 &lt; |x-a| &lt; δ</text>
+  <text class="note" x="858" y="410">就能保证函数值落在</text>
+  <text class="expr" x="878" y="436">|f(x)-L| &lt; ε</text>
+
+  <text class="note" x="858" y="490">4. 重点不是 x=a 这一点，</text>
+  <text class="note" x="878" y="514">而是 x 在 a 附近时的整体行为。</text>
+
+  <text class="subtitle" x="858" y="572">可视化页对应</text>
+  <text class="expr" x="858" y="606">函数极限：epsilon-delta 定义</text>
+</svg>

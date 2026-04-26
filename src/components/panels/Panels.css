@@ -1,9 +1,9 @@
 .panel-card {
   border: 1px solid #dbe6ef;
   border-radius: 12px;
-  padding: 12px;
+  padding: 14px;
   background: #ffffff;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .panel-title {
@@ -12,6 +12,14 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #4f6477;
+}
+
+.panel-eyebrow {
+  margin-bottom: 10px;
+  font-size: 11px;
+  color: #688397;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .panel-note {
@@ -78,6 +86,50 @@
 }
 
 .obs-delta {
+  color: #0d7b57;
+}
+
+.notebook-panel {
+  background: linear-gradient(180deg, #ffffff 0%, #f9fcff 100%);
+}
+
+.notebook-summary {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #35566b;
+}
+
+.notebook-block + .notebook-block {
+  margin-top: 14px;
+}
+
+.notebook-copy p {
+  margin: 0 0 8px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #3f5b6d;
+}
+
+.notebook-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.notebook-list {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+  color: #2d4657;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.notebook-list.is-prompts li::marker {
+  color: #0f6f96;
+}
+
+.notebook-list.is-takeaways li::marker {
   color: #0d7b57;
 }
 

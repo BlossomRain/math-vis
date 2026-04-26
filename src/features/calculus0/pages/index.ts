@@ -7,14 +7,14 @@ export function getCalculus0PreliminariesPages(): Page[] {
   return [
     {
       id: eulerAngleSumModel.id,
-      title: '欧拉与和角公式',
+      title: eulerAngleSumModel.title,
       template: eulerAngleSumModel.template,
       pageModel: eulerAngleSumModel,
       config: adaptGeometryLabModelToSceneConfig(eulerAngleSumModel)
     },
     {
       id: harmonicCompositionModel.id,
-      title: '叠合公式',
+      title: harmonicCompositionModel.title,
       template: harmonicCompositionModel.template,
       pageModel: harmonicCompositionModel,
       config: adaptGeometryLabModelToSceneConfig(harmonicCompositionModel)

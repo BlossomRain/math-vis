@@ -6,11 +6,76 @@ export const sequenceLimitModel: GeometryLabPageModel = {
   template: 'geometry-lab',
   bounds: { xMin: 0, xMax: 28, yMin: 0.5, yMax: 2.1 },
   params: { epsilon: 0.18, N: 8, L: 1, rate: 1, maxN: 24 },
+  notebook: {
+    summary: '把数列 a_n = 1 + 1/n 的尾部行为画出来，专门练 epsilon-N 定义里“从某一项之后都进入带内”的含义。',
+    goals: [
+      '理解 N 不是某一项本身，而是尾部开始的门槛',
+      '分清“偶尔进入 epsilon 带”和“从此以后都在带内”',
+      '通过尾部高亮建立数列极限的直观'
+    ],
+    sections: [
+      {
+        id: 'tail',
+        title: '尾部视角',
+        body: [
+          '蓝色点展示整个数列，绿色高亮表示从 N 开始的尾部。',
+          '极限定义真正关心的是：一旦过了 N，后面所有项是否都待在 epsilon 带里。'
+        ]
+      }
+    ],
+    prompts: [
+      '改变 epsilon，看满足条件所需的 N 大小怎样变化。',
+      '把 maxN 拉大，观察数列尾部越来越贴近 L。'
+    ],
+    takeaways: [
+      '数列极限强调的是尾部整体，而不是单个点。',
+      'epsilon 越小，通常需要的 N 越大。'
+    ]
+  },
   controls: [
     { param: 'epsilon', type: 'slider', min: 0.05, max: 0.6, step: 0.01, label: 'epsilon' },
     { param: 'N', type: 'slider', min: 1, max: 24, step: 1, label: 'N' },
     { param: 'maxN', type: 'slider', min: 8, max: 40, step: 1, label: '显示到 n' }
   ],
+  keyPointSchema: {
+    groups: [
+      {
+        id: 'anchors',
+        title: '关键量',
+        fields: [
+          { id: 'l', label: 'L', valueExpr: 'L', precision: 4 },
+          { id: 'upper', label: 'L + epsilon', valueExpr: 'L + epsilon', precision: 4 },
+          { id: 'lower', label: 'L - epsilon', valueExpr: 'L - epsilon', precision: 4 },
+          { id: 'n', label: 'N', valueExpr: 'N', precision: 0 },
+          { id: 'an', label: 'a_N', valueExpr: 'L + rate / N', precision: 4 },
+          { id: 'tail', label: '尾部距离', valueExpr: 'abs((L + rate / N) - L)', precision: 4 }
+        ]
+      }
+    ]
+  },
+  observationSchema: {
+    groups: [
+      {
+        id: 'condition',
+        title: 'epsilon-N 条件',
+        fields: [
+          { id: 'epsilon', label: 'epsilon', valueExpr: 'epsilon', precision: 4 },
+          { id: 'n', label: 'N', valueExpr: 'N', precision: 0 },
+          { id: 'margin', label: '|a_N - L|', valueExpr: 'abs((L + rate / N) - L)', precision: 4 },
+          { id: 'satisfy', label: '是否进入带内', valueExpr: 'abs((L + rate / N) - L) < epsilon', format: 'boolean' }
+        ]
+      },
+      {
+        id: 'tail',
+        title: '尾部观察',
+        fields: [
+          { id: 'an', label: 'a_N', valueExpr: 'L + rate / N', precision: 4 },
+          { id: 'an1', label: 'a_(N+1)', valueExpr: 'L + rate / (N + 1)', precision: 4 },
+          { id: 'l', label: 'L', valueExpr: 'L', precision: 4 }
+        ]
+      }
+    ]
+  },
   userFunctionLayers: [],
   legendItems: [],
   formulaDock: {

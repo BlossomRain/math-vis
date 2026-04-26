@@ -3,10 +3,10 @@ import { Page } from '../../chapters'
 export const derivativesPages: Page[] = [
   {
     id: 'derivative',
-    title: '导数与切线',
+    title: '导数：切线与局部线性',
     config: {
       id: 'derivative',
-      title: '导数与切线',
+      title: '导数：切线与局部线性',
       scene: {
         type: '2d',
         bounds: { xMin: -5, xMax: 5, yMin: -5, yMax: 5 }
