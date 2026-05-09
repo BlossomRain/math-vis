@@ -69,3 +69,11 @@ Windows 环境可直接运行：
 
 - [项目方案](./doc/项目方案.md)
 - [实施规划](./doc/实施规划.md)
+
+## Hub Entry
+
+This tool project is managed through the workspace hub:
+
+D:\workspace\workspace-hub\projects\math-vis\README.md
+
+Use the hub view as the workspace-level entry for project context, references, and future shared links.

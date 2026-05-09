@@ -1,0 +1,28 @@
+type: tool
+name: math-vis
+display_name: Math Vis
+domain: react
+status: active
+tags:
+- react
+- vite
+- visualization
+- math
+- tool
+related: []
+contracts: []
+docs:
+- README.md
+- doc/
+entry:
+- src/App.tsx
+- package.json
+- index.html
+commands:
+- npm install
+- npm run dev
+- npm run build
+location:
+  root: code_root
+  relative: project\tools\math-vis
+hub_view_rel: projects/math-vis/README.md
